@@ -1,7 +1,3 @@
-const topBtn = document.getElementById("topBtn");
-
-console.log(topBtn);
-
 "use strict";
 
 /* ==========================================
@@ -11,7 +7,6 @@ console.log(topBtn);
 const loader = document.getElementById("loader");
 const progress = document.getElementById("progress");
 const cursorGlow = document.getElementById("cursorGlow");
-const topBtn = document.getElementById("topBtn");
 const typing = document.getElementById("typing");
 
 const sections = document.querySelectorAll("section");
@@ -198,10 +193,6 @@ function onScroll() {
 
     progress.style.width = percent + "%";
 
-    /* Top Button */
-
-    topBtn.style.display =
-        window.scrollY > 500 ? "flex" : "none";
 
     /* Active Nav */
 
