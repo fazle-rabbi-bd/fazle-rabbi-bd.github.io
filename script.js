@@ -181,21 +181,6 @@ if (window.innerWidth > 900) {
 
 }
 
-/* ==========================================
-   BACK TO TOP
-========================================== */
-
-topBtn.addEventListener("click", () => {
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-    });
-
-});
 
 /* ==========================================
    SCROLL EVENTS
