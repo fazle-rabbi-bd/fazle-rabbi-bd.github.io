@@ -522,49 +522,59 @@ Warehouse, Logistics and Store Operations.
 
 <section id="contact" class="contact section reveal">
 
-<div class="section-title">
+    <div class="section-title">
 
-<span>CONTACT</span>
+        <span>CONTACT</span>
 
-<h2>Let's Work Together</h2>
+        <h2>Let's Work Together</h2>
 
-</div>
+    </div>
 
-<div class="contact-grid">
+    <form class="contact-form"
+          action="https://api.web3forms.com/submit"
+          method="POST">
 
-<div class="contact-card">
+        <input type="hidden"
+               name="access_key"
+               value="YOUR_ACCESS_KEY">
 
-<h3>Email</h3>
+        <input type="hidden"
+               name="subject"
+               value="New Portfolio Contact">
 
-<p>your@email.com</p>
+        <input type="hidden"
+               name="from_name"
+               value="Fazle Rabbi Portfolio">
 
-</div>
+        <div class="form-grid">
 
-<div class="contact-card">
+            <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required>
 
-<h3>Phone</h3>
+            <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required>
 
-<p>+8801XXXXXXXXX</p>
+        </div>
 
-</div>
+        <textarea
+            name="message"
+            rows="7"
+            placeholder="Write your message..."
+            required></textarea>
 
-<div class="contact-card">
+        <button class="primary" type="submit">
 
-<h3>Location</h3>
+            Send Message
 
-<p>Gazipur, Bangladesh</p>
+        </button>
 
-</div>
-
-<div class="contact-card">
-
-<h3>Status</h3>
-
-<p>Available for Relocation</p>
-
-</div>
-
-</div>
+    </form>
 
 <div class="socials">
 
