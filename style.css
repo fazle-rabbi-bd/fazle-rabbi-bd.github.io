@@ -683,17 +683,17 @@ body{
 
 }
 
-/* ==========================================
-   EXPERIENCE
-========================================== */
+/*=========================================
+ PROFESSIONAL EXPERIENCE
+=========================================*/
 
 .timeline{
 
     position:relative;
 
-    max-width:950px;
+    max-width:900px;
 
-    margin:auto;
+    margin:70px auto 0;
 
 }
 
@@ -703,23 +703,15 @@ body{
 
     position:absolute;
 
-    left:50%;
+    left:25px;
 
     top:0;
 
-    transform:translateX(-50%);
+    bottom:0;
 
     width:3px;
 
-    height:100%;
-
-    background:linear-gradient(
-
-    var(--primary),
-
-    var(--green)
-
-    );
+    background:rgba(255,255,255,.08);
 
 }
 
@@ -727,23 +719,17 @@ body{
 
     position:relative;
 
-    width:50%;
+    width:100%;
 
-    padding:25px 40px;
+    padding-left:70px;
 
-}
-
-.timeline-item.left{
-
-    left:0;
-
-    text-align:right;
+    margin-bottom:40px;
 
 }
 
-.timeline-item.right{
+.timeline-item:last-child{
 
-    left:50%;
+    margin-bottom:0;
 
 }
 
@@ -753,29 +739,21 @@ body{
 
     position:absolute;
 
-    width:18px;
+    left:17px;
 
-    height:18px;
+    top:28px;
+
+    width:16px;
+
+    height:16px;
 
     border-radius:50%;
 
-    background:var(--primary-light);
+    background:var(--primary);
 
-    top:40px;
+    border:4px solid var(--bg);
 
-    box-shadow:0 0 20px rgba(37,99,235,.45);
-
-}
-
-.timeline-item.left::before{
-
-    right:-9px;
-
-}
-
-.timeline-item.right::before{
-
-    left:-9px;
+    box-shadow:0 0 18px rgba(37,99,235,.45);
 
 }
 
@@ -785,15 +763,15 @@ body{
 
     border:1px solid var(--border);
 
-    -webkit-backdrop-filter:blur(18px); 
-     
-    backdrop-filter:blur(18px);
+    border-radius:24px;
 
-    border-radius:var(--radius);
+    padding:32px;
 
-    padding:30px;
+    -webkit-backdrop-filter:blur(20px);
 
-    transition:var(--transition);
+    backdrop-filter:blur(20px);
+
+    transition:.35s;
 
 }
 
@@ -807,11 +785,13 @@ body{
 
 }
 
-.year{
+.timeline-content .year{
 
     display:inline-block;
 
-    padding:7px 16px;
+    margin-bottom:18px;
+
+    padding:8px 18px;
 
     border-radius:999px;
 
@@ -819,38 +799,77 @@ body{
 
     color:var(--primary-light);
 
-    margin-bottom:16px;
-
     font-size:14px;
+
+    font-weight:700;
 
 }
 
-.timeline h3{
-
-    font-size:26px;
+.timeline-content h3{
 
     margin-bottom:8px;
 
+    font-size:28px;
+
 }
 
-.timeline h4{
+.timeline-content h4{
+
+    margin-bottom:18px;
 
     color:var(--text3);
 
-    font-weight:600;
-
-    margin-bottom:16px;
+    font-weight:500;
 
 }
 
-.timeline p{
+.timeline-content p{
+
+    line-height:1.9;
 
     color:var(--text2);
 
-    line-height:1.8;
+}
+
+@media(max-width:900px){
+
+.timeline{
+
+    max-width:100%;
 
 }
 
+.timeline-item{
+
+    padding-left:55px;
+
+}
+
+.timeline::before{
+
+    left:18px;
+
+}
+
+.timeline-item::before{
+
+    left:10px;
+
+}
+
+.timeline-content{
+
+    padding:24px;
+
+}
+
+.timeline-content h3{
+
+    font-size:24px;
+
+}
+
+}
 /* ==========================================
    SCROLL REVEAL
 ========================================== */
