@@ -1734,56 +1734,94 @@ grid-template-columns:1fr;
 
 
 /*=========================================
- DIGITAL JOURNEY
+  DIGITAL JOURNEY
 =========================================*/
 
-.timeline-wrapper{
+.journey{
 
     position:relative;
 
-    max-width:950px;
+}
 
-    margin:70px auto 0;
+.journey-subtitle{
+
+    max-width:760px;
+
+    margin:20px auto 0;
+
+    text-align:center;
+
+    color:var(--text3);
+
+    font-size:18px;
+
+    line-height:1.8;
 
 }
 
-.timeline-progress{
+/*====================
+ Timeline
+====================*/
+
+.journey-timeline{
+
+    position:relative;
+
+    max-width:1000px;
+
+    margin:70px auto;
+
+}
+
+.timeline-track{
+
+    height:4px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.journey-timeline{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.timeline-point{
+
+    position:relative;
+
+    background:var(--bg);
+
+    padding:0 8px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    color:var(--primary-light);
+
+}
+
+.timeline-point::before{
+
+    content:"";
 
     position:absolute;
 
     left:50%;
 
-    top:0;
-
-    width:4px;
-
-    height:100%;
-
-    background:rgba(255,255,255,.08);
+    top:-28px;
 
     transform:translateX(-50%);
-
-}
-
-.journey-item{
-
-    position:relative;
-
-    width:50%;
-
-    padding:20px 50px;
-
-}
-
-.journey-item:nth-child(even){
-
-    margin-left:50%;
-
-}
-
-.timeline-dot{
-
-    position:absolute;
 
     width:18px;
 
@@ -1793,31 +1831,47 @@ grid-template-columns:1fr;
 
     background:var(--primary);
 
-    top:40px;
+    border:4px solid var(--bg);
 
-    right:-9px;
-
-    box-shadow:0 0 20px rgba(37,99,235,.45);
+    box-shadow:0 0 20px rgba(37,99,235,.4);
 
 }
 
-.journey-item:nth-child(even) .timeline-dot{
+/*====================
+ Grid
+====================*/
 
-    left:-9px;
+.journey-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,minmax(0,1fr));
+
+    gap:34px;
 
 }
+
+/*====================
+ Card
+====================*/
 
 .journey-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:34px;
+
+    border-radius:26px;
 
     background:var(--glass);
 
     border:1px solid var(--border);
 
-    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(26px);
 
-    border-radius:24px;
-
-    padding:32px;
+    backdrop-filter:blur(26px);
 
     transition:.35s;
 
@@ -1825,39 +1879,75 @@ grid-template-columns:1fr;
 
 .journey-card:hover{
 
-    transform:translateY(-10px);
+    transform:translateY(-8px);
 
-    border-color:#2563eb;
+    border-color:rgba(37,99,235,.35);
 
-    box-shadow:0 20px 60px rgba(0,0,0,.35);
+    box-shadow:var(--shadow);
+
+}
+
+.journey-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+    135deg,
+
+    rgba(37,99,235,.14),
+
+    transparent 70%
+
+    );
+
+    opacity:0;
+
+    transition:.35s;
+
+}
+
+.journey-card:hover::before{
+
+    opacity:1;
 
 }
 
 .journey-year{
 
-    display:inline-block;
+    display:inline-flex;
 
-    margin-bottom:18px;
+    align-items:center;
 
-    padding:8px 18px;
+    justify-content:center;
 
-    border-radius:50px;
+    padding:9px 18px;
 
-    background:#2563eb22;
+    border-radius:999px;
 
-    color:#60a5fa;
+    background:rgba(37,99,235,.15);
+
+    color:var(--primary-light);
 
     font-size:14px;
 
     font-weight:700;
 
+    margin-bottom:22px;
+
 }
 
 .journey-card h3{
 
-    margin-bottom:15px;
+    font-size:28px;
 
-    font-size:24px;
+    margin-bottom:14px;
 
 }
 
@@ -1865,13 +1955,15 @@ grid-template-columns:1fr;
 
     color:var(--text3);
 
-    margin-bottom:18px;
+    margin-bottom:20px;
+
+    line-height:1.8;
 
 }
 
 .journey-card ul{
 
-    padding-left:18px;
+    padding-left:22px;
 
     color:var(--text2);
 
@@ -1879,6 +1971,450 @@ grid-template-columns:1fr;
 
 .journey-card li{
 
-    margin-bottom:10px;
+    margin-bottom:12px;
+
+    line-height:1.7;
+
+}
+
+/*====================
+ Featured Card
+====================*/
+
+.featured{
+
+    border:1px solid rgba(37,99,235,.35);
+
+}
+
+.featured::after{
+
+    content:"CURRENT";
+
+    position:absolute;
+
+    top:22px;
+
+    right:-38px;
+
+    transform:rotate(45deg);
+
+    background:var(--primary);
+
+    color:#fff;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    padding:6px 40px;
+
+}
+
+/*====================
+ Responsive
+====================*/
+
+@media(max-width:900px){
+
+.journey-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.journey-timeline{
+
+overflow-x:auto;
+
+padding-bottom:15px;
+
+gap:45px;
+
+}
+
+.timeline-track{
+
+display:none;
+
+}
+
+.timeline-point{
+
+flex:none;
+
+}
+
+.journey-card{
+
+padding:28px;
+
+}
+
+.journey-card h3{
+
+font-size:24px;
+
+}
+
+}
+/*=========================================
+ TIMELINE ANIMATION
+=========================================*/
+
+.timeline-track{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.timeline-track::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:0;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        #2563eb,
+        #60a5fa
+    );
+
+    transition:width 1.2s ease;
+
+}
+
+.timeline-track.active::after{
+
+    width:100%;
+
+}
+
+/*========================*/
+
+.timeline-point{
+
+    transform:translateY(15px);
+
+    opacity:.45;
+
+    transition:.45s;
+
+}
+
+.timeline-point.active{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+    color:white;
+
+}
+
+.timeline-point.active::before{
+
+    transform:translateX(-50%) scale(1.35);
+
+    box-shadow:
+
+    0 0 0 10px rgba(37,99,235,.12),
+
+    0 0 28px rgba(37,99,235,.55);
+
+}
+
+/*========================*/
+
+.journey-card{
+
+    opacity:0;
+
+    transform:translateY(60px);
+
+}
+
+.journey-card.show{
+
+    opacity:1;
+
+    transform:none;
+
+}
+
+/*========================*/
+
+.journey-card{
+
+    transition:
+
+    transform .45s,
+
+    opacity .8s,
+
+    box-shadow .35s,
+
+    border-color .35s;
+
+}
+
+/*========================*/
+
+.journey-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+
+    height:220px;
+
+    background:
+
+    radial-gradient(
+
+        rgba(96,165,250,.16),
+
+        transparent 70%
+
+    );
+
+    top:-120px;
+
+    left:-120px;
+
+    transition:.45s;
+
+    pointer-events:none;
+
+}
+
+.journey-card:hover::after{
+
+    left:45%;
+
+    top:35%;
+
+}
+/*=========================================
+ PREMIUM BORDER
+=========================================*/
+
+.journey-card{
+
+    isolation:isolate;
+
+}
+
+.journey-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-1px;
+
+    border-radius:26px;
+
+    padding:1px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        rgba(96,165,250,.45),
+
+        rgba(37,99,235,.05),
+
+        rgba(34,197,94,.35)
+
+    );
+
+    -webkit-mask:
+
+        linear-gradient(#fff 0 0) content-box,
+
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+    mask-composite:exclude;
+
+    opacity:0;
+
+    transition:.4s;
+
+    z-index:-1;
+
+}
+
+.journey-card:hover::before{
+
+    opacity:1;
+
+}
+/*=========================================
+ FLOATING LIGHT
+=========================================*/
+
+.journey-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+
+    height:260px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(
+
+        rgba(96,165,250,.18),
+
+        transparent 70%
+
+    );
+
+    left:-180px;
+
+    top:-180px;
+
+    transition:.5s;
+
+    pointer-events:none;
+
+}
+
+.journey-card:hover::after{
+
+    left:45%;
+
+    top:35%;
+
+}
+.timeline-point.active::before{
+
+    animation:pulseDot 2.2s infinite;
+
+}
+
+@keyframes pulseDot{
+
+    0%{
+
+        box-shadow:
+
+        0 0 0 0 rgba(37,99,235,.45);
+
+    }
+
+    70%{
+
+        box-shadow:
+
+        0 0 0 18px rgba(37,99,235,0);
+
+    }
+
+    100%{
+
+        box-shadow:
+
+        0 0 0 0 rgba(37,99,235,0);
+
+    }
+
+}
+
+.journey-card{
+
+    will-change:transform;
+
+}
+
+.journey-card:hover{
+
+    transform:
+
+    translateY(-12px)
+
+    rotateX(4deg);
+
+}
+.timeline-track{
+
+    overflow:hidden;
+
+}
+
+.timeline-track::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-30%;
+
+    top:0;
+
+    width:30%;
+
+    height:100%;
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.4),
+
+        transparent
+
+    );
+
+    animation:shine 4s infinite;
+
+}
+
+@keyframes shine{
+
+    to{
+
+        left:130%;
+
+    }
+
+}
+.featured{
+
+    background:
+
+    linear-gradient(
+
+        180deg,
+
+        rgba(37,99,235,.12),
+
+        rgba(255,255,255,.04)
+
+    );
 
 }
