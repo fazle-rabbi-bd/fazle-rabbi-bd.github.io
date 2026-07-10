@@ -236,31 +236,39 @@ onScroll();
 
 
 
+
 /*=========================================
- JOURNEY ANIMATION
+ DIGITAL JOURNEY ANIMATION
 =========================================*/
 
 const timeline = document.querySelector(".timeline-track");
 const timelinePoints = document.querySelectorAll(".timeline-point");
 const journeyCards = document.querySelectorAll(".journey-card");
 
-function animateJourney(){
+let journeyAnimated = false;
+
+function animateJourney() {
 
     const section = document.getElementById("journey");
 
-    if(!section || !timeline) return;
+    if (!section || !timeline) return;
+
+    // Animation only once
+    if (journeyAnimated) return;
 
     const top = section.getBoundingClientRect().top;
 
-    if(top < window.innerHeight - 150){
+    if (top < window.innerHeight - 150) {
+
+        journeyAnimated = true;
 
         timeline.classList.add("active");
 
-        if(timelinePoints.length){
+        if (timelinePoints.length) {
 
-            timelinePoints.forEach((point,index)=>{
+            timelinePoints.forEach((point, index) => {
 
-                setTimeout(()=>{
+                setTimeout(() => {
 
                     point.classList.add("active");
 
@@ -270,11 +278,11 @@ function animateJourney(){
 
         }
 
-        if(journeyCards.length){
+        if (journeyCards.length) {
 
-            journeyCards.forEach((card,index)=>{
+            journeyCards.forEach((card, index) => {
 
-                setTimeout(()=>{
+                setTimeout(() => {
 
                     card.classList.add("show");
 
