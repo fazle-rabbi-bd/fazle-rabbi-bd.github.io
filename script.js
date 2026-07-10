@@ -240,53 +240,54 @@ onScroll();
  JOURNEY ANIMATION
 =========================================*/
 
-const timeline =
-document.querySelector(".timeline-track");
-
-const timelinePoints =
-document.querySelectorAll(".timeline-point");
-
-const journeyCards =
-document.querySelectorAll(".journey-card");
+const timeline = document.querySelector(".timeline-track");
+const timelinePoints = document.querySelectorAll(".timeline-point");
+const journeyCards = document.querySelectorAll(".journey-card");
 
 function animateJourney(){
 
-    const section =
-    document.querySelector("#journey");
+    const section = document.getElementById("journey");
 
-    if(!section) return;
+    if(!section || !timeline) return;
 
-    const top =
-    section.getBoundingClientRect().top;
+    const top = section.getBoundingClientRect().top;
 
-    if(top < window.innerHeight-150){
+    if(top < window.innerHeight - 150){
 
         timeline.classList.add("active");
 
-        timelinePoints.forEach((point,index)=>{
+        if(timelinePoints.length){
 
-            setTimeout(()=>{
+            timelinePoints.forEach((point,index)=>{
 
-                point.classList.add("active");
+                setTimeout(()=>{
 
-            },index*180);
+                    point.classList.add("active");
 
-        });
+                }, index * 180);
 
-        journeyCards.forEach((card,index)=>{
+            });
 
-            setTimeout(()=>{
+        }
 
-                card.classList.add("show");
+        if(journeyCards.length){
 
-            },250+(index*120));
+            journeyCards.forEach((card,index)=>{
 
-        });
+                setTimeout(()=>{
+
+                    card.classList.add("show");
+
+                }, 250 + (index * 120));
+
+            });
+
+        }
 
     }
 
 }
 
-window.addEventListener("scroll",animateJourney);
+window.addEventListener("scroll", animateJourney);
 
 animateJourney();
