@@ -238,64 +238,80 @@ onScroll();
 
 
 /*=========================================
- DIGITAL JOURNEY ANIMATION
+ JOURNEY ANIMATION
 =========================================*/
 
 const timeline = document.querySelector(".timeline-track");
 const timelinePoints = document.querySelectorAll(".timeline-point");
 const journeyCards = document.querySelectorAll(".journey-card");
+const journeySection = document.getElementById("journey");
 
 let journeyAnimated = false;
 
-function animateJourney() {
+function playJourneyAnimation() {
 
-    const section = document.getElementById("journey");
-
-    if (!section || !timeline) return;
-
-    // Animation only once
     if (journeyAnimated) return;
 
-    const top = section.getBoundingClientRect().top;
+    journeyAnimated = true;
 
-    if (top < window.innerHeight - 150) {
-
-        journeyAnimated = true;
-
+    if (timeline) {
         timeline.classList.add("active");
-
-        if (timelinePoints.length) {
-
-            timelinePoints.forEach((point, index) => {
-
-                setTimeout(() => {
-
-                    point.classList.add("active");
-
-                }, index * 180);
-
-            });
-
-        }
-
-        if (journeyCards.length) {
-
-            journeyCards.forEach((card, index) => {
-
-                setTimeout(() => {
-
-                    card.classList.add("show");
-
-                }, 250 + (index * 120));
-
-            });
-
-        }
-
     }
+
+    timelinePoints.forEach((point, index) => {
+
+        setTimeout(() => {
+
+            point.classList.add("active");
+
+        }, index * 180);
+
+    });
+
+    journeyCards.forEach((card, index) => {
+
+        setTimeout(() => {
+
+            card.classList.add("show");
+
+        }, 250 + (index * 120));
+
+    });
 
 }
 
-window.addEventListener("scroll", animateJourney);
+if ("IntersectionObserver" in window && journeySection) {
 
-animateJourney();
+    const journeyObserver = new IntersectionObserver(
+
+        (entries, observer) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    playJourneyAnimation();
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+
+        {
+
+            threshold: 0.25
+
+        }
+
+    );
+
+    journeyObserver.observe(journeySection);
+
+} else {
+
+    playJourneyAnimation();
+
+}
